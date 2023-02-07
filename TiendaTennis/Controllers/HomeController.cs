@@ -1,6 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using TiendaTennis.Models;
+/*Autor: Hermilo Almaraz Vargas
+  Fecha de creación: 04/2/2023
+  Fecha de actulizacion: 05/2/2023
+  Descripcion: Creación del controlleler  principal (Donde se despliegará el contenido principal)
+*/
 
 namespace TiendaTennis.Controllers
 {
