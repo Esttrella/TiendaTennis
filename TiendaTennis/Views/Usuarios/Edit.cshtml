@@ -3,7 +3,12 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
+<!--
+  Autor: Heber Esaú Henández Ramirez
+  Fecha de creación: 05/2/2023
+  Fecha de actulizacion: 06/2/2023
+  Descripcion: Formulario Editar
+-->
 <h1>Editar</h1>
 
 <h4>Usuario</h4>
@@ -50,5 +55,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
