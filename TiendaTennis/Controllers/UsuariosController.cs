@@ -6,7 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TiendaTennis.Models;
-
+/*Autor: Heber Esaú Hernández Ramirez
+  Fecha de creación: 04/2/2023
+  Fecha de actulizacion: 05/2/2023
+  Descripcion: Creación del controller el cual 
+  nos permitira gestionar el proyecto.
+*/
 namespace TiendaTennis.Controllers
 {
     public class UsuariosController : Controller
@@ -21,10 +26,10 @@ namespace TiendaTennis.Controllers
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Usuarios.ToListAsync());
+            return View(await _context.Usuarios.ToListAsync());
         }
 
-        // GET: Usuarios/Details/5
+        // GET: Usuario/Detalles de la acción 
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Usuarios == null)
@@ -42,15 +47,14 @@ namespace TiendaTennis.Controllers
             return View(usuario);
         }
 
-        // GET: Usuarios/Create
+        // GET: Usuario/Crear
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Usuarios/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Usuarios/Crear 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Correo,Contraseña,Telefono")] Usuario usuario)
@@ -64,7 +68,7 @@ namespace TiendaTennis.Controllers
             return View(usuario);
         }
 
-        // GET: Usuarios/Edit/5
+        // GET: Usuarios/Editar
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Usuarios == null)
@@ -80,9 +84,7 @@ namespace TiendaTennis.Controllers
             return View(usuario);
         }
 
-        // POST: Usuarios/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Usuarios/Editar 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Correo,Contraseña,Telefono")] Usuario usuario)
@@ -115,7 +117,7 @@ namespace TiendaTennis.Controllers
             return View(usuario);
         }
 
-        // GET: Usuarios/Delete/5
+        // GET: Usuarios/Eliminar
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Usuarios == null)
@@ -133,7 +135,7 @@ namespace TiendaTennis.Controllers
             return View(usuario);
         }
 
-        // POST: Usuarios/Delete/5
+        // POST: Usuarios/Eliminar
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -147,14 +149,14 @@ namespace TiendaTennis.Controllers
             {
                 _context.Usuarios.Remove(usuario);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
+        //Metdo para determinar si existe el suaruo
         private bool UsuarioExists(int id)
         {
-          return _context.Usuarios.Any(e => e.Id == id);
+            return _context.Usuarios.Any(e => e.Id == id);
         }
     }
 }
