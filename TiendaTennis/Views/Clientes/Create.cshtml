@@ -4,6 +4,12 @@
     ViewData["Title"] = "Create";
 }
 
+<!--
+  Autor: Hermilo Almaraz Vargas
+  Fecha de creación: 05/2/2023
+  Fecha de actulizacion: 06/2/2023
+  Descripcion: Formularilio para crear cliente
+-->
 <h1>Agregar cliente</h1>
 
 
@@ -54,5 +60,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
