@@ -7,6 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TiendaTennis.Models;
 
+/*Autor: Hermilo Almaraz Vargas
+  Fecha de creación: 04/2/2023
+  Fecha de actulizacion: 05/2/2023
+  Descripcion: Creación del controller el cual 
+  nos permitira gestionar el proyecto.
+*/
+
 namespace TiendaTennis.Controllers
 {
     public class ClientesController : Controller
@@ -21,10 +28,10 @@ namespace TiendaTennis.Controllers
         // GET: Clientes
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Clientes.ToListAsync());
+            return View(await _context.Clientes.ToListAsync());
         }
 
-        // GET: Clientes/Details/5
+        // GET: Clientes/Detalles de la acción 
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Clientes == null)
@@ -42,7 +49,7 @@ namespace TiendaTennis.Controllers
             return View(cliente);
         }
 
-        // GET: Clientes/Create
+        // GET: Clientes/Crear
         public IActionResult Create()
         {
             return View();
@@ -64,7 +71,7 @@ namespace TiendaTennis.Controllers
             return View(cliente);
         }
 
-        // GET: Clientes/Edit/5
+        // GET: Clientes/Editar
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Clientes == null)
@@ -80,9 +87,7 @@ namespace TiendaTennis.Controllers
             return View(cliente);
         }
 
-        // POST: Clientes/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //Metodo para editar clientes
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Correo,Contraseña,Direccion,Telefono")] Cliente cliente)
@@ -115,7 +120,7 @@ namespace TiendaTennis.Controllers
             return View(cliente);
         }
 
-        // GET: Clientes/Delete/5
+        // GET: Metodo eliminar clientes (Condición)
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Clientes == null)
@@ -133,7 +138,7 @@ namespace TiendaTennis.Controllers
             return View(cliente);
         }
 
-        // POST: Clientes/Delete/5
+        // POST: Action eliminar clientes
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -147,14 +152,14 @@ namespace TiendaTennis.Controllers
             {
                 _context.Clientes.Remove(cliente);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
+        //Metodo para verificar si el cliente existe.
         private bool ClienteExists(int id)
         {
-          return _context.Clientes.Any(e => e.Id == id);
+            return _context.Clientes.Any(e => e.Id == id);
         }
     }
 }
