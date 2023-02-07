@@ -7,6 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TiendaTennis.Models;
 
+/*Autor: Estella Lopez Lopez
+  Fecha de creación: 04/2/2023
+  Fecha de actulizacion: 05/2/2023
+  Descripcion: Creación del controller el cual 
+  nos permitira gestionar el proyecto.
+*/
+
 namespace TiendaTennis.Controllers
 {
     public class ProductosController : Controller
@@ -21,10 +28,10 @@ namespace TiendaTennis.Controllers
         // GET: Productos
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Productos.ToListAsync());
+            return View(await _context.Productos.ToListAsync());
         }
 
-        // GET: Productos/Details/5
+        // GET: Producto/Detalles de la acción 
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Productos == null)
@@ -42,15 +49,14 @@ namespace TiendaTennis.Controllers
             return View(producto);
         }
 
-        // GET: Productos/Create
+        // GET: Producto/Crear
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Productos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Productos/Crear
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Producto1,Precio,Stok,Descripcion,Path")] Producto producto)
@@ -64,7 +70,7 @@ namespace TiendaTennis.Controllers
             return View(producto);
         }
 
-        // GET: Productos/Edit/5
+        // GET: Prodcuto/Editar
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Productos == null)
@@ -115,7 +121,7 @@ namespace TiendaTennis.Controllers
             return View(producto);
         }
 
-        // GET: Productos/Delete/5
+        // GET: Metodo eliminar producto (Condición)
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Productos == null)
@@ -133,7 +139,7 @@ namespace TiendaTennis.Controllers
             return View(producto);
         }
 
-        // POST: Productos/Delete/5
+        // POST: Action eliminar producto
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -147,14 +153,14 @@ namespace TiendaTennis.Controllers
             {
                 _context.Productos.Remove(producto);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
+        //Metodo para verificar si el producto existe.
         private bool ProductoExists(int id)
         {
-          return _context.Productos.Any(e => e.Id == id);
+            return _context.Productos.Any(e => e.Id == id);
         }
     }
 }
