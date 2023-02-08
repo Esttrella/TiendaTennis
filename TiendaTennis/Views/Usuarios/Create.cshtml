@@ -3,7 +3,20 @@
 @{
     ViewData["Title"] = "Create";
 }
+<style>
+    body {
+        background-image: url(/img/nike2.jpg);
+    }
 
+    h1 {
+        color: white;
+    }
+
+    .control-label {
+        color: white;
+        font-size: large;
+    }
+</style>
 <h1>Agregar Usuario</h1>
 
 
@@ -29,7 +42,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Contraseña" class="control-label"></label>
-                <input asp-for="Contraseña" class="form-control" />
+                <input asp-for="Contraseña" class="form-control" type="password"/>
                 <span asp-validation-for="Contraseña" class="text-danger"></span>
             </div>
             <div class="form-group">
